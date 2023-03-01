@@ -1,0 +1,8 @@
+{
+  "slug": "idempotency-key-store",
+  "title": "Idempotency Key Store",
+  "description": "Replay successful byte responses while detecting conflicting key reuse.",
+  "category": "backend",
+  "demo_args": [],
+  "expected_exit": 0
+}
