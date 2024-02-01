@@ -76,3 +76,22 @@ class IdempotencyStore:
         with self._lock:
             entry.response = response
         return Result(response, False)
+
+
+def main():
+    argparse.ArgumentParser(description=__doc__).parse_args()
+    store = IdempotencyStore(ttl_seconds=10)
+    calls = []
+    def create_order():
+        calls.append("create")
+        return b'{"order_id":"synthetic-001"}'
+    events = []
+    for timestamp in (0, 1, 10):
+        result = store.run("request-001", b'{"quantity":2}', create_order, timestamp)
+        events.append({"at": timestamp, "replayed": result.replayed,
+                       "response": json.loads(result.response)})
+    print(json.dumps({"operations_executed": len(calls), "events": events}, indent=2))
+
+
+if __name__ == "__main__":
+    main()
