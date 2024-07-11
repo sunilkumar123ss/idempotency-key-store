@@ -11,6 +11,11 @@ class IdempotencyTests(unittest.TestCase):
         self.assertTrue(second.replayed)
         self.assertEqual(second.response, b"original")
 
+    def test_payload_conflict(self):
+        store = IdempotencyStore()
+        store.run("k", b"a", lambda: b"ok", 0)
+        with self.assertRaises(IdempotencyConflict):
+            store.run("k", b"b", lambda: b"wrong", 1)
 
 
 
