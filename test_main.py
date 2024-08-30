@@ -17,6 +17,12 @@ class IdempotencyTests(unittest.TestCase):
         with self.assertRaises(IdempotencyConflict):
             store.run("k", b"b", lambda: b"wrong", 1)
 
+    def test_exact_expiry_allows_new_request(self):
+        store = IdempotencyStore(5)
+        store.run("k", b"a", lambda: b"old", 0)
+        result = store.run("k", b"b", lambda: b"new", 5)
+        self.assertFalse(result.replayed)
+        self.assertEqual(result.response, b"new")
 
 
 

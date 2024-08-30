@@ -4,7 +4,7 @@ This reference implementation and all of the following milestone commits were pr
 
 **Every recorded author and committer date in this timeline is synthetic. These dates are not evidence that the code was written, tested, deployed, or used professionally in the past.**
 
-This snapshot is milestone 7 of 17. It is an incomplete tutorial stage; source, fixtures, tests, the CLI, and automation are introduced progressively.
+This snapshot is milestone 8 of 17. It is an incomplete tutorial stage; source, fixtures, tests, the CLI, and automation are introduced progressively.
 
 The progression decomposes already-completed October 2026 code into meaningful additions. It is not recovered original development history. Publication time is separate from the synthetic Git timestamps.
 
@@ -19,7 +19,7 @@ The progression decomposes already-completed October 2026 code into meaningful a
 | 5 | 2024-02-01T12:14:27+05:30 | add the deterministic demonstration and command-line entry point (present) |
 | 6 | 2024-06-14T17:39:56+05:30 | test replay returns original without callback (present) |
 | 7 | 2024-07-11T11:49:06+05:30 | test payload conflict (present) |
-| 8 | 2024-08-30T18:03:47+05:30 | test exact expiry allows new request (later stage) |
+| 8 | 2024-08-30T18:03:47+05:30 | test exact expiry allows new request (present) |
 | 9 | 2024-10-21T12:44:58+05:30 | test failure does not cache (later stage) |
 | 10 | 2025-02-20T14:45:43+05:30 | test pending request rejected even after ttl (later stage) |
 | 11 | 2025-02-26T11:35:22+05:30 | test empty response is cached (later stage) |
