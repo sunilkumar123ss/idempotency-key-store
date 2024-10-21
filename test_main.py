@@ -24,6 +24,11 @@ class IdempotencyTests(unittest.TestCase):
         self.assertFalse(result.replayed)
         self.assertEqual(result.response, b"new")
 
+    def test_failure_does_not_cache(self):
+        store = IdempotencyStore()
+        def fail(): raise OSError("synthetic failure")
+        with self.assertRaises(OSError): store.run("k", b"a", fail, 0)
+        self.assertFalse(store.run("k", b"a", lambda: b"ok", 1).replayed)
 
 
 
