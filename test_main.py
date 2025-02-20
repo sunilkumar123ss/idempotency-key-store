@@ -30,6 +30,13 @@ class IdempotencyTests(unittest.TestCase):
         with self.assertRaises(OSError): store.run("k", b"a", fail, 0)
         self.assertFalse(store.run("k", b"a", lambda: b"ok", 1).replayed)
 
+    def test_pending_request_rejected_even_after_ttl(self):
+        store = IdempotencyStore(1)
+        def callback():
+            with self.assertRaises(RequestInProgress):
+                store.run("k", b"a", lambda: b"duplicate", 5)
+            return b"done"
+        self.assertEqual(store.run("k", b"a", callback, 0).response, b"done")
 
 
 
