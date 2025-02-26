@@ -38,6 +38,10 @@ class IdempotencyTests(unittest.TestCase):
             return b"done"
         self.assertEqual(store.run("k", b"a", callback, 0).response, b"done")
 
+    def test_empty_response_is_cached(self):
+        store = IdempotencyStore()
+        store.run("k", b"", lambda: b"", 0)
+        self.assertTrue(store.run("k", b"", lambda: b"wrong", 1).replayed)
 
 
 
