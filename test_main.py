@@ -43,6 +43,10 @@ class IdempotencyTests(unittest.TestCase):
         store.run("k", b"", lambda: b"", 0)
         self.assertTrue(store.run("k", b"", lambda: b"wrong", 1).replayed)
 
+    def test_bad_response_releases_key(self):
+        store = IdempotencyStore()
+        with self.assertRaises(TypeError): store.run("k", b"a", lambda: "text", 0)
+        self.assertFalse(store.run("k", b"a", lambda: b"ok", 1).replayed)
 
 
 
