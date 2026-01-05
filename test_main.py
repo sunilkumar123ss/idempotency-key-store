@@ -48,6 +48,12 @@ class IdempotencyTests(unittest.TestCase):
         with self.assertRaises(TypeError): store.run("k", b"a", lambda: "text", 0)
         self.assertFalse(store.run("k", b"a", lambda: b"ok", 1).replayed)
 
+    def test_invalid_inputs_and_clock(self):
+        with self.assertRaises(ValueError): IdempotencyStore(-1)
+        store = IdempotencyStore()
+        with self.assertRaises(ValueError): store.run("", b"a", lambda: b"x", 0)
+        store.run("k", b"a", lambda: b"x", 2)
+        with self.assertRaises(ValueError): store.run("j", b"a", lambda: b"x", 1)
 
 
 if __name__ == '__main__':

@@ -4,7 +4,7 @@ This reference implementation and all of the following milestone commits were pr
 
 **Every recorded author and committer date in this timeline is synthetic. These dates are not evidence that the code was written, tested, deployed, or used professionally in the past.**
 
-This snapshot is milestone 12 of 17. It is an incomplete tutorial stage; source, fixtures, tests, the CLI, and automation are introduced progressively.
+This snapshot is milestone 13 of 17. It is an incomplete tutorial stage; source, fixtures, tests, the CLI, and automation are introduced progressively.
 
 The progression decomposes already-completed October 2026 code into meaningful additions. It is not recovered original development history. Publication time is separate from the synthetic Git timestamps.
 
@@ -24,7 +24,7 @@ The progression decomposes already-completed October 2026 code into meaningful a
 | 10 | 2025-02-20T14:45:43+05:30 | test pending request rejected even after ttl (present) |
 | 11 | 2025-02-26T11:35:22+05:30 | test empty response is cached (present) |
 | 12 | 2025-09-13T15:49:32+05:30 | test bad response releases key (present) |
-| 13 | 2026-01-05T16:03:01+05:30 | test invalid inputs and clock (later stage) |
+| 13 | 2026-01-05T16:03:01+05:30 | test invalid inputs and clock (present) |
 | 14 | 2026-01-10T19:40:18+05:30 | add isolated tests, demo, and help verification (later stage) |
 | 15 | 2026-02-20T17:05:46+05:30 | add the hosted Python verification workflow (later stage) |
 | 16 | 2026-09-24T16:37:19+05:30 | record the completed local verification and its limits (later stage) |
